@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRIAD DMA | COD: BO6 ULTRA MENU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap');
+        
+        :root {
+            --main-color: #e62429;
+            --secondary-color: #ffcc00;
+            --rage-color: #ff00ff;
+            --legit-color: #00ff88;
+            --bg-color: rgba(10, 10, 10, 0.95);
+        }
+        
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background: url('https://i.imgur.com/YOUR_IMAGE.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Animazione sfondo avanzata */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--main-color);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+        
+        .glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, var(--main-color) 0%, transparent 70%);
+            opacity: 0.3;
+            z-index: -2;
+            animation: pulse 4s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.1; transform: scale(0.95); }
+            100% { opacity: 0.4; transform: scale(1.05); }
+        }
+        
+        .menu-container {
+            background: var(--bg-color);
+            border: 2px solid var(--main-color);
+            border-radius: 15px;
+            width: 550px;
+            padding: 25px;
+            box-shadow: 0 0 40px rgba(230, 36, 41, 0.8);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        .menu-container::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid rgba(255, 204, 0, 0.3);
+            border-radius: 20px;
+            z-index: -1;
+            animation: borderGlow 3s infinite alternate;
+        }
+        
+        @keyframes borderGlow {
+            0% { border-color: rgba(255, 204, 0, 0.3); }
+            100% { border-color: rgba(230, 36, 41, 0.5); }
+        }
+        
+        .menu-header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .menu-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            margin: 0;
+            background: linear-gradient(90deg, #ff0000, #ffcc00, #00ff00, #0099ff, #ff00ff);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 8s ease infinite, flicker 2s infinite alternate;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .menu-header p {
+            color: #aaa;
+            margin: 5px 0;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        
+        .preset-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .preset-btn {
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .preset-btn i {
+            font-size: 16px;
+        }
+        
+        .preset-btn.legit {
+            background: linear-gradient(to right, var(--legit-color), #007744);
+            color: black;
+        }
+        
+        .preset-btn.rage {
+            background: linear-gradient(to right, var(--rage-color), #9900cc);
+            color: white;
+        }
+        
+        .preset-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            position: relative;
+        }
+        
+        .tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            background: rgba(20, 20, 20, 0.7);
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            transition: all 0.3s;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            font-size: 14px;
+        }
+        
+        .tab::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--main-color);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        
+        .tab.active {
+            background: rgba(30, 30, 30, 0.9);
+            color: var(--secondary-color);
+        }
+        
+        .tab.active::after {
+            width: 100%;
+        }
+        
+        .tab:hover {
+            background: rgba(230, 36, 41, 0.3);
+        }
+        
+        .tab i {
+            margin-right: 8px;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .option {
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 8px;
+            border-left: 3px solid var(--main-color);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option:hover {
+            background: rgba(50, 50, 50, 0.8);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--main-color);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+        
+        .option:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .option-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .option-title h3 {
+            margin: 0;
+            color: var(--secondary-color);
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .option-title i {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .toggle {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: #333;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #777;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: all 0.3s;
+        }
+        
+        .toggle.active {
+            background: var(--main-color);
+        }
+        
+        .toggle.active::after {
+            left: 28px;
+            background: white;
+        }
+        
+        .toggle.rage {
+            background: #333;
+        }
+        
+        .toggle.rage.active {
+            background: var(--rage-color);
+        }
+        
+        .toggle.legit {
+            background: #333;
+        }
+        
+        .toggle.legit.active {
+            background: var(--legit-color);
+        }
+        
+        .option-content {
+            margin-top: 12px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 500px; }
+        }
+        
+        .option-content.active {
+            display: block;
+        }
+        
+        .slider-container {
+            margin: 12px 0;
+        }
+        
+        .slider-container label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ddd;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 6px;
+            background: #333;
+            outline: none;
+            border-radius: 3px;
+            -webkit-appearance: none;
+            transition: all 0.3s;
+        }
+        
+        .slider:hover {
+            background: #444;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--main-color);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s;
+        }
+        
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+        
+        .slider-container.rage .slider::-webkit-slider-thumb {
+            background: var(--rage-color);
+        }
+        
+        .slider-container.legit .slider::-webkit-slider-thumb {
+            background: var(--legit-color);
+        }
+        
+        .dropdown {
+            width: 100%;
+            padding: 8px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.3s;
+        }
+        
+        .dropdown:hover {
+            background: #444;
+        }
+        
+        .color-picker {
+            width: 100%;
+            height: 30px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        
+        .keybind {
+            background: #333;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .keybind:hover {
+            background: #444;
+        }
+        
+        .hotkey-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 11px;
+            color: #777;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+            border: 1px solid var(--main-color);
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Audio button */
+        .audio-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: #777;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .audio-btn:hover {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Particelle animate -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Glow effect -->
+    <div class="glow"></div>
+    
+    <!-- Menu container -->
+    <div class="menu-container">
+        <!-- Audio toggle -->
+        <button class="audio-btn" onclick="toggleAudio()">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        
+        <!-- Header -->
+        <div class="menu-header">
+            <h1>TRIAD DMA</h1>
+            <p>BLACK OPS 6 ULTRA MENU | v3.0</p>
+        </div>
+        
+        <!-- Preset buttons -->
+        <div class="preset-buttons">
+            <button class="preset-btn legit" onclick="applyPreset('legit')">
+                <i class="fas fa-user-secret"></i> LEGIT PRESET
+            </button>
+            <button class="preset-btn rage" onclick="applyPreset('rage')">
+                <i class="fas fa-fire"></i> RAGE PRESET
+            </button>
+        </div>
+        
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active" onclick="openTab('aimbot')">
+                <i class="fas fa-crosshairs"></i> AIMBOT
+            </div>
+            <div class="tab" onclick="openTab('esp')">
+                <i class="fas fa-eye"></i> ESP
+            </div>
+            <div class="tab" onclick="openTab('weapons')">
+                <i class="fas fa-gun"></i> WEAPONS
+            </div>
+            <div class="tab" onclick="openTab('visuals')">
+                <i class="fas fa-camera"></i> VISUALS
+            </div>
+            <div class="tab" onclick="openTab('misc')">
+                <i class="fas fa-cogs"></i> MISC
+            </div>
+        </div>
+        
+        <!-- Aimbot Tab -->
+        <div id="aimbot" class="tab-content active">
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-crosshairs"></i> AIMBOT</h3>
+                    <div class="toggle" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content">
+                    <div class="slider-container legit">
+                        <label>
+                            Smooth: 
+                            <span class="slider-value" id="smooth-value">50%</span>
+                        </label>
+                        <input type="range" min="0" max="100" value="50" class="slider" id="smooth-slider">
+                    </div>
+                    <div class="slider-container legit">
+                        <label>
+                            FOV: 
+                            <span class="slider-value" id="fov-value">10°</span>
+                        </label>
+                        <input type="range" min="1" max="30" value="10" class="slider" id="fov-slider">
+                    </div>
+                    <div class="slider-container legit">
+                        <label>
+                            Reaction Time: 
+                            <span class="slider-value" id="reaction-value">100ms</span>
+                        </label>
+                        <input type="range" min="0" max="500" value="100" class="slider" id="reaction-slider">
+                    </div>
+                    <div class="slider-container">
+                        <label>Bone Priority:</label>
+                        <select class="dropdown" id="bone-select">
+                            <option value="head">Head</option>
+                            <option value="chest">Chest</option>
+                            <option value="pelvis">Pelvis</option>
+                            <option value="random">Random</option>
+                        </select>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="aimbot-friendcheck" checked>
+                        <label for="aimbot-friendcheck">Friend Check</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="aimbot-visiblecheck">
+                        <label for="aimbot-visiblecheck">Visible Check</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-bullseye"></i> SILENT AIM</h3>
+                    <div class="toggle" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content">
+                    <div class="slider-container rage">
+                        <label>
+                            Hit Chance: 
+                            <span class="slider-value" id="hitchance-value">80%</span>
+                        </label>
+                        <input type="range" min="0" max="100" value="80" class="slider" id="hitchance-slider">
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="silent-ignorewalls">
+                        <label for="silent-ignorewalls">Ignore Walls</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-fingerprint"></i> TRIGGERBOT</h3>
+                    <div class="toggle" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content">
+                    <div class="slider-container">
+                        <label>
+                            Delay: 
+                            <span class="slider-value" id="trigger-delay">50ms</span>
+                        </label>
+                        <input type="range" min="0" max="200" value="50" class="slider" id="trigger-slider">
+                    </div>
+                    <div class="hotkey-list">
+                        <div class="keybind">MOUSE4</div>
+                        <div class="keybind">MOUSE5</div>
+                        <div class="keybind">ALT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ESP Tab -->
+        <div id="esp" class="tab-content">
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-cube"></i> BOX ESP</h3>
+                    <div class="toggle active" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content active">
+                    <div class="slider-container">
+                        <label>Box Style:</label>
+                        <select class="dropdown" id="box-style">
+                            <option value="2d">2D Box</option>
+                            <option value="3d">3D Box</option>
+                            <option value="corner">Corner Box</option>
+                        </select>
+                    </div>
+                    <div class="color-option">
+                        <label>Enemy Color:</label>
+                        <input type="color" id="enemy-color" value="#ff0000">
+                    </div>
+                    <div class="color-option">
+                        <label>Team Color:</label>
+                        <input type="color" id="team-color" value="#00ff00">
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="box-filled" checked>
+                        <label for="box-filled">Filled Box</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-user"></i> PLAYER INFO</h3>
+                    <div class="toggle active" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content active">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="esp-name" checked>
+                        <label for="esp-name">Player Name</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="esp-health" checked>
+                        <label for="esp-health">Health Bar</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="esp-distance">
+                        <label for="esp-distance">Distance</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="esp-weapon">
+                        <label for="esp-weapon">Weapon</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-arrows-alt-v"></i> SNAPLINES</h3>
+                    <div class="toggle" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content">
+                    <div class="color-option">
+                        <label>Line Color:</label>
+                        <input type="color" id="line-color" value="#ffff00">
+                    </div>
+                    <div class="slider-container">
+                        <label>
+                            Line Thickness: 
+                            <span class="slider-value" id="line-thickness">2px</span>
+                        </label>
+                        <input type="range" min="1" max="5" value="2" class="slider" id="line-thickness-slider">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Weapons Tab -->
+        <div id="weapons" class="tab-content">
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-arrows-alt"></i> NO RECOIL</h3>
+                    <div class="toggle active" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content active">
+                    <div class="slider-container">
+                        <label>
+                            Strength: 
+                            <span class="slider-value" id="recoil-strength">75%</span>
+                        </label>
+                        <input type="range" min="0" max="100" value="75" class="slider" id="recoil-strength-slider">
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="recoil-custom">
+                        <label for="recoil-custom">Custom Per Weapon</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-bolt"></i> RAPID FIRE</h3>
+                    <div class="toggle" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content">
+                    <div class="slider-container rage">
+                        <label>
+                            Speed Multiplier: 
+                            <span class="slider-value" id="rapidfire-value">2.0x</span>
+                        </label>
+                        <input type="range" min="1" max="5" step="0.1" value="2.0" class="slider" id="rapidfire-slider">
+                    </div>
+                    <div class="hotkey-list">
+                        <div class="keybind">TOGGLE</div>
+                        <div class="keybind">HOLD</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-infinity"></i> INFINITE AMMO</h3>
+                    <div class="toggle active" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content active">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="ammo-noreload" checked>
+                        <label for="ammo-noreload">No Reload</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="ammo-nospread">
+                        <label for="ammo-nospread">No Spread</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Visuals Tab -->
+        <div id="visuals" class="tab-content">
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-sun"></i> BRIGHTNESS</h3>
+                    <div class="toggle" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content">
+                    <div class="slider-container">
+                        <label>
+                            Level: 
+                            <span class="slider-value" id="brightness-value">50%</span>
+                        </label>
+                        <input type="range" min="0" max="100" value="50" class="slider" id="brightness-slider">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-expand"></i> FOV CHANGER</h3>
+                    <div class="toggle active" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content active">
+                    <div class="slider-container">
+                        <label>
+                            FOV: 
+                            <span class="slider-value" id="fov-changer-value">90</span>
+                        </label>
+                        <input type="range" min="60" max="120" value="90" class="slider" id="fov-changer-slider">
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="fov-scoped">
+                        <label for="fov-scoped">Affect Scoped</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-eye-dropper"></i> WORLD COLOR</h3>
+                    <div class="toggle" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content">
+                    <div class="color-option">
+                        <label>Ambient Color:</label>
+                        <input type="color" id="ambient-color" value="#ffffff">
+                    </div>
+                    <div class="slider-container">
+                        <label>
+                            Saturation: 
+                            <span class="slider-value" id="saturation-value">100%</span>
+                        </label>
+                        <input type="range" min="0" max="200" value="100" class="slider" id="saturation-slider">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Misc Tab -->
+        <div id="misc" class="tab-content">
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-running"></i> MOVEMENT</h3>
+                    <div class="toggle" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content">
+                    <div class="slider-container rage">
+                        <label>
+                            Speed: 
+                            <span class="slider-value" id="speed-value">1.0x</span>
+                        </label>
+                        <input type="range" min="1" max="3" step="0.1" value="1.0" class="slider" id="speed-slider">
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="movement-bunnyhop">
+                        <label for="movement-bunnyhop">Bunny Hop</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="movement-nofall">
+                        <label for="movement-nofall">No Fall Damage</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-shield-alt"></i> PROTECTION</h3>
+                    <div class="toggle active" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content active">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="protection-godmode">
+                        <label for="protection-godmode">God Mode</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="protection-antistun" checked>
+                        <label for="protection-antistun">Anti-Stun</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="protection-antiflash" checked>
+                        <label for="protection-antiflash">Anti-Flash</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <div class="option-title" onclick="toggleOption(this)">
+                    <h3><i class="fas fa-gamepad"></i> GAME HACKS</h3>
+                    <div class="toggle" onclick="toggleActive(this, event)"></div>
+                </div>
+                <div class="option-content">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="game-unlockall">
+                        <label for="game-unlockall">Unlock All</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="game-xpboost">
+                        <label for="game-xpboost">XP Boost</label>
+                    </div>
+                    <div class="slider-container">
+                        <label>
+                            XP Multiplier: 
+                            <span class="slider-value" id="xp-value">2.0x</span>
+                        </label>
+                        <input type="range" min="1" max="10" step="0.1" value="2.0" class="slider" id="xp-slider">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>⚠️ QUESTA È UNA SIMULAZIONE VISIVA - NON FUNZIONA IN GIOCO ⚠️</p>
+        </div>
+    </div>
+
+    <script>
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Tabs system
+        function openTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const tabButtons = document.querySelectorAll('.tab');
+            tabButtons.forEach(button => button.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Toggle options
+        function toggleOption(element) {
+            const content = element.parentElement.querySelector('.option-content');
+            content.classList.toggle('active');
+        }
+        
+        // Toggle switches
+        function toggleActive(element, event) {
+            event.stopPropagation();
+            element.classList.toggle('active');
+            
+            // Add pulse effect
+            element.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                element.style.transform = '';
+            }, 200);
+        }
+        
+        // Update slider values
+        function updateSliderValues() {
+            const sliders = document.querySelectorAll('.slider');
+            sliders.forEach(slider => {
+                slider.addEventListener('input', function() {
+                    const valueDisplay = this.parentElement.querySelector('.slider-value');
+                    if (this.id.includes('fov')) {
+                        valueDisplay.textContent = this.value + '°';
+                    } else if (this.id.includes('reaction') || this.id.includes('trigger')) {
+                        valueDisplay.textContent = this.value + 'ms';
+                    } else if (this.id.includes('brightness') || this.id.includes('recoil') || 
+                               this.id.includes('smooth') || this.id.includes('hitchance')) {
+                        valueDisplay.textContent = this.value + '%';
+                    } else if (this.id.includes('rapidfire') || this.id.includes('speed') || 
+                               this.id.includes('xp')) {
+                        valueDisplay.textContent = this.value + 'x';
+                    } else if (this.id.includes('line-thickness')) {
+                        valueDisplay.textContent = this.value + 'px';
+                    } else {
+                        valueDisplay.textContent = this.value;
+                    }
+                });
+            });
+        }
+        
+        // Apply presets
+        function applyPreset(type) {
+            const toggles = document.querySelectorAll('.toggle');
+            const sliders = document.querySelectorAll('.slider');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            
+            if (type === 'legit') {
+                // Legit preset - subtle settings
+                toggles.forEach(toggle => {
+                    if (toggle.parentElement.parentElement.id.includes('aimbot') || 
+                        toggle.parentElement.parentElement.id.includes('esp')) {
+                        toggle.classList.add('active');
+                        toggle.classList.remove('rage');
+                        toggle.classList.add('legit');
+                    } else {
+                        toggle.classList.remove('active');
+                    }
+                });
+                
+                sliders.forEach(slider => {
+                    if (slider.id.includes('smooth')) slider.value = 80;
+                    if (slider.id.includes('fov')) slider.value = 5;
+                    if (slider.id.includes('reaction')) slider.value = 150;
+                });
+                
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.id.includes('friendcheck') || 
+                        checkbox.id.includes('visiblecheck') ||
+                        checkbox.id.includes('esp-name') ||
+                        checkbox.id.includes('esp-health')) {
+                        checkbox.checked = true;
+                    } else {
+                        checkbox.checked = false;
+                    }
+                });
+                
+                // Pulse effect on preset button
+                event.currentTarget.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    event.currentTarget.style.transform = '';
+                }, 300);
+                
+            } else if (type === 'rage') {
+                // Rage preset - aggressive settings
+                toggles.forEach(toggle => {
+                    toggle.classList.add('active');
+                    toggle.classList.remove('legit');
+                    toggle.classList.add('rage');
+                });
+                
+                sliders.forEach(slider => {
+                    if (slider.id.includes('smooth')) slider.value = 20;
+                    if (slider.id.includes('fov')) slider.value = 30;
+                    if (slider.id.includes('reaction')) slider.value = 0;
+                    if (slider.id.includes('hitchance')) slider.value = 100;
+                    if (slider.id.includes('rapidfire')) slider.value = 5;
+                    if (slider.id.includes('speed')) slider.value = 2.5;
+                });
+                
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = true;
+                });
+                
+                // Pulse effect on preset button
+                event.currentTarget.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    event.currentTarget.style.transform = '';
+                }, 300);
+            }
+            
+            // Update all slider displays
+            updateSliderValues();
+        }
+        
+        // Audio toggle
+        function toggleAudio() {
+            const audioBtn = document.querySelector('.audio-btn i');
+            if (audioBtn.classList.contains('fa-volume-up')) {
+                audioBtn.classList.remove('fa-volume-up');
+                audioBtn.classList.add('fa-volume-mute');
+                // In a real implementation, you would mute audio here
+            } else {
+                audioBtn.classList.remove('fa-volume-mute');
+                audioBtn.classList.add('fa-volume-up');
+                // In a real implementation, you would unmute audio here
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            updateSliderValues();
+            
+            // Set first tab as active by default
+            document.querySelector('.tab').click();
+        });
+    </script>
+</body>
+</html>
